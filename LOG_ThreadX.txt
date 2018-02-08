@@ -1,0 +1,296 @@
+ThreadX START!!
+DHCP Get IP
+192.168.0.11
+192.168.0.1
+NTP Socket Create ok
+NTP Socket Bind ok
+NTP Time Request ok
+NTP Time Receive ok
+[2018-01-16 11:02:10] [INFO]: handleMQTTSetCallbacks()
+[2018-01-16 11:02:10] [INFO]: tpMQTTSetCallbacks result : 0
+[2018-01-16 11:02:10] [INFO]: tpSimpleInitialize
+serviceID : myservice, deviceID: hjkim1
+[2018-01-16 11:02:10] [INFO]: tpSimpleInitialize : 0
+[2018-01-16 11:02:10] [INFO]: client id : hjkim1_A1:B2:C3:D4:E5:F
+[2018-01-16 11:02:10] [INFO]: handleMQTTCreate()
+[2018-01-16 11:02:10] [INFO]:  host = 
+[2018-01-16 11:02:10] [INFO]:  port = 
+[2018-01-16 11:02:10] [INFO]:  keepalive = 120
+[2018-01-16 11:02:10] [INFO]:  userName = 4b0a4350f6a511e78ba2
+[2018-01-16 11:02:10] [INFO]:  password = 0
+[2018-01-16 11:02:10] [INFO]:  enableServerCertAuth = 1
+[2018-01-16 11:02:10] [INFO]:  subscribeTopic = 
+[2018-01-16 11:02:10] [INFO]:  subscribeTopicCnt = 1
+[2018-01-16 11:02:10] [INFO]:  publishTopic = 0
+[2018-01-16 11:02:10] [INFO]:  enabledCipherSuites = 0
+[2018-01-16 11:02:10] [INFO]:  cleanSession = 1
+[2018-01-16 11:02:10] [INFO]:  clientID = 
+[2018-01-16 11:02:10] [INFO]: Use secure(TLS) socket
+[2018-01-16 11:02:10] [INFO]: clientID =>
+[2018-01-16 11:02:10] [INFO]: 
+[2018-01-16 11:02:10] [INFO]: MQTT Connected
+[2018-01-16 11:02:10] [INFO]: MQTTConnected result : 0
+[2018-01-16 11:02:10] [INFO]: CONNECTION_STATUS : 2
+[2018-01-16 11:02:10] [INFO]: MQTT Request Subscribe topic =>
+[2018-01-16 11:02:10] [INFO]: v1/dev/myservice/hjkim1/down
+[2018-01-16 11:02:10] [INFO]: MQTTSubscribed result : 0
+[2018-01-16 11:02:10] [INFO]: tpSimpleAttribute
+topic : v1/dev/myservice/hjkim1/attribute
+[2018-01-16 11:02:10] [INFO]: {
+                                "sysAvailableMemory":   3263,
+                                                                "sysFirmwareVersion":    "2.0.0",
+                                "sysHardwareVersion":   "1.0",
+                                                                "sysSerialNumber":       "400715-1703-003321-1641",
+                                                "sysErrorCode": 0,
+                                                                        "sysNetworkType":        "ethernet",
+                                        "sysDeviceIpAddress":   "192.168.0.11",
+        "sysGatewayIpAddress":  "192.168.0.1",
+                                                "sysThingPlugIpAddress": "",
+                        "sysLocationLatitude":  37.380257,
+                                                                "sysLocationLongitude":  127.115479,
+                                "act7colorLed": 0
+                                                 }
+[2018-01-16 11:02:10] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:10] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:10] [DEBUG]: topic : v1/dev/myservice/hjkim1/attribute
+[2018-01-16 11:02:10] [DEBUG]: {
+                                        "sysAvailableMemory":   3263,
+                                                                        "sysFirmwareVersion":    "2.0.0",
+                                        "sysHardwareVersion":   "1.0",
+                                                                        "sysSerialNumber":       "400715-1703-003321-1641",
+                                                        "sysErrorCode": 0,
+        "sysNetworkType":       "ethernet",
+                                                "sysDeviceIpAddress":   "192.168.0.11",
+                "sysGatewayIpAddress":  "192.168.0.1",
+                                                        "sysThingPlugIpAddress": "218.53.242.111",
+                                "sysLocationLatitude":  37.380257,
+                                                                        "sysLocationLongitude":  127.115479,
+                                        "act7colorLed": 0
+                                                         }
+[2018-01-16 11:02:10] [DEBUG]: payloadlen : 405
+[2018-01-16 11:02:10] [DEBUG]: qos : 1
+[2018-01-16 11:02:10] [DEBUG]: retained : 0
+[2018-01-16 11:02:10] [DEBUG]: dup : 0
+[2018-01-16 11:02:10] [INFO]: MQTTMessageDelivered token : 0, step : 0
+[2018-01-16 11:02:10] [INFO]: tpSDKCreate result : 0
+[2018-01-16 11:02:10] [INFO]: handleMQTTIsConnected()
+[2018-01-16 11:02:10] [INFO]: tpSimpleTelemetry
+topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:10] [INFO]: {
+                                "temp1":        20.25,
+                                                        "humi1":        45,
+        "light1":       225,
+                                "ts":   1516068130
+                                                  }
+[2018-01-16 11:02:10] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:10] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:10] [DEBUG]: topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:10] [DEBUG]: {
+                                        "temp1":        20.25,
+                                                                "humi1": 45,
+        "light1":       225,
+                                "ts":   1516068130
+                                                  }
+[2018-01-16 11:02:10] [DEBUG]: payloadlen : 68
+[2018-01-16 11:02:10] [DEBUG]: qos : 1
+[2018-01-16 11:02:10] [DEBUG]: retained : 0
+[2018-01-16 11:02:10] [DEBUG]: dup : 0
+[2018-01-16 11:02:10] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:10] [INFO]: handleMQTTYield()
+[2018-01-16 11:02:20] [INFO]: handleMQTTIsConnected()
+[2018-01-16 11:02:20] [INFO]: tpSimpleTelemetry
+topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:20] [INFO]: {
+                                "temp1":        22.25,
+                                                        "humi1":        45,
+        "light1":       225,
+                                "ts":   1516068140
+                                                  }
+[2018-01-16 11:02:20] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:20] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:20] [DEBUG]: topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:20] [DEBUG]: {
+                                        "temp1":        22.25,
+                                                                "humi1": 45,
+        "light1":       225,
+                                "ts":   1516068140
+                                                  }
+[2018-01-16 11:02:20] [DEBUG]: payloadlen : 68
+[2018-01-16 11:02:20] [DEBUG]: qos : 1
+[2018-01-16 11:02:20] [DEBUG]: retained : 0
+[2018-01-16 11:02:20] [DEBUG]: dup : 0
+[2018-01-16 11:02:20] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:20] [INFO]: handleMQTTYield()
+[2018-01-16 11:02:27] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/hjkim1/down, step :
+[2018-01-16 11:02:27] [INFO]: paylaod->
+[2018-01-16 11:02:27] [INFO]: {"deviceId":"4b0b54c0-f6a5-11e7-8ba2-6f996b68699e","cmdId":1473478187,"cmd":"setAttribute","attribute":{"act7colorLed":2}}
+[2018-01-16 11:02:27] [INFO]: act7colorLed : 2, 1473478187
+[2018-01-16 11:02:27] [INFO]: tpSimpleAttribute
+topic : v1/dev/myservice/hjkim1/attribute
+[2018-01-16 11:02:27] [INFO]: {
+                                "act7colorLed": 2
+                                                 }
+[2018-01-16 11:02:27] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:27] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:27] [DEBUG]: topic : v1/dev/myservice/hjkim1/attribute
+[2018-01-16 11:02:27] [DEBUG]: {
+                                        "act7colorLed": 2
+                                                         }
+[2018-01-16 11:02:27] [DEBUG]: payloadlen : 22
+[2018-01-16 11:02:27] [DEBUG]: qos : 1
+[2018-01-16 11:02:27] [DEBUG]: retained : 0
+[2018-01-16 11:02:27] [DEBUG]: dup : 0
+[2018-01-16 11:02:27] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:27] [INFO]: handleMQTTIsConnected()
+[2018-01-16 11:02:27] [INFO]: tpSimpleTelemetry
+topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:27] [INFO]: {
+                                "temp1":        24.84,
+                                                        "humi1":        44,
+        "light1":       234,
+                                "ts":   1516068147
+                                                  }
+[2018-01-16 11:02:27] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:27] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:27] [DEBUG]: topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:27] [DEBUG]: {
+                                        "temp1":        24.84,
+                                                                "humi1": 44,
+        "light1":       234,
+                                "ts":   1516068147
+                                                  }
+[2018-01-16 11:02:27] [DEBUG]: payloadlen : 68
+[2018-01-16 11:02:27] [DEBUG]: qos : 1
+[2018-01-16 11:02:27] [DEBUG]: retained : 0
+[2018-01-16 11:02:27] [DEBUG]: dup : 0
+[2018-01-16 11:02:27] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:27] [INFO]: handleMQTTYield()
+[2018-01-16 11:02:34] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/hjkim1/down, step :
+[2018-01-16 11:02:34] [INFO]: paylaod->
+[2018-01-16 11:02:34] [INFO]: {"serviceName":"myservice","deviceName":"hjkim1","cmdId":16,"cmd":"jsonRpc","rpcMode":"twoway","rpcReq":{"jsonrpc":"2.0","method":"tp_user","params":[{"act7colorLed":"1"}],"id":1129007415}}
+[2018-01-16 11:02:34] [INFO]: RPC_USER
+[2018-01-16 11:02:34] [INFO]:
+rpc : 2.0,
+id : 1129007415,
+cmd : 0
+[2018-01-16 11:02:34] [INFO]: tpSimpleRawResult2
+topic : v1/dev/myservice/hjkim1/up
+[2018-01-16 11:02:34] [INFO]: {
+                                "cmd":  "jsonRpc",
+                                                        "cmdId":        1,
+        "result":       "success",
+                                        "rpcRsp":       {
+                                                                        "jsonrpc":       "2.0",
+                                "id":   1129007415,
+                                                                "method":        "tp_user",
+                                "result":       {"act7colorLed":0}
+                                                                        }
+                                                                         }
+[2018-01-16 11:02:34] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:34] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:34] [DEBUG]: topic : v1/dev/myservice/hjkim1/up
+[2018-01-16 11:02:34] [DEBUG]: {
+                                        "cmd":  "jsonRpc",
+                                                                "cmdId": 1,
+        "result":       "success",
+                                        "rpcRsp":       {
+                                                                        "jsonrpc":       "2.0",
+                                "id":   1129007415,
+                                                                "method":        "tp_user",
+                                "result":       {"act7colorLed":0}
+                                                                        }
+                                                                         }
+[2018-01-16 11:02:34] [DEBUG]: payloadlen : 167
+[2018-01-16 11:02:34] [DEBUG]: qos : 1
+[2018-01-16 11:02:34] [DEBUG]: retained : 0
+[2018-01-16 11:02:34] [DEBUG]: dup : 0
+[2018-01-16 11:02:34] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:34] [INFO]: handleMQTTIsConnected()
+[2018-01-16 11:02:34] [INFO]: tpSimpleTelemetry
+topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:34] [INFO]: {
+                                "temp1":        28.41,
+                                                        "humi1":        41,
+        "light1":       241,
+                                "ts":   1516068154
+                                                  }
+[2018-01-16 11:02:34] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:34] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:34] [DEBUG]: topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:34] [DEBUG]: {
+                                        "temp1":        28.41,
+                                                                "humi1": 41,
+        "light1":       241,
+                                "ts":   1516068154
+                                                  }
+[2018-01-16 11:02:34] [DEBUG]: payloadlen : 68
+[2018-01-16 11:02:34] [DEBUG]: qos : 1
+[2018-01-16 11:02:34] [DEBUG]: retained : 0
+[2018-01-16 11:02:34] [DEBUG]: dup : 0
+[2018-01-16 11:02:34] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:34] [INFO]: handleMQTTYield()
+[2018-01-16 11:02:38] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/hjkim1/down, step :
+[2018-01-16 11:02:38] [INFO]: paylaod->
+[2018-01-16 11:02:38] [INFO]: {"serviceName":"myservice","deviceName":"hjkim1","cmdId":17,"cmd":"jsonRpc","rpcMode":"oneway","rpcReq":{"jsonrpc":"2.0","method":"tp_user","params":[{"act7colorLed":"1"}],"id":1129007416}}
+[2018-01-16 11:02:38] [INFO]: RPC_USER
+[2018-01-16 11:02:38] [INFO]:
+rpc : 2.0,
+id : 1129007416,
+cmd : 0
+[2018-01-16 11:02:38] [INFO]: tpSimpleRawResult2
+topic : v1/dev/myservice/hjkim1/up
+[2018-01-16 11:02:38] [INFO]: {
+                                "cmd":  "jsonRpc",
+                                                        "cmdId":        1,
+        "result":       "success",
+                                        "rpcRsp":       {
+                                                                        "jsonrpc":       "2.0",
+                                "id":   1129007416,
+                                                                "method":        "tp_user",
+                                "result":       {"act7colorLed":0}
+                                                                        }
+                                                                         }
+[2018-01-16 11:02:38] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:38] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:38] [DEBUG]: topic : v1/dev/myservice/hjkim1/up
+[2018-01-16 11:02:38] [DEBUG]: {
+                                        "cmd":  "jsonRpc",
+                                                                "cmdId": 1,
+        "result":       "success",
+                                        "rpcRsp":       {
+                                                                        "jsonrpc":       "2.0",
+                                "id":   1129007416,
+                                                                "method":        "tp_user",
+                                "result":       {"act7colorLed":0}
+                                                                        }
+                                                                         }
+[2018-01-16 11:02:38] [DEBUG]: payloadlen : 167
+[2018-01-16 11:02:38] [DEBUG]: qos : 1
+[2018-01-16 11:02:38] [DEBUG]: retained : 0
+[2018-01-16 11:02:38] [DEBUG]: dup : 0
+[2018-01-16 11:02:38] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:38] [INFO]: handleMQTTIsConnected()
+[2018-01-16 11:02:38] [INFO]: tpSimpleTelemetry
+topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:38] [INFO]: {
+                                "temp1":        30.89,
+                                                        "humi1":        49,
+        "light1":       239,
+                                "ts":   1516068158
+                                                  }
+[2018-01-16 11:02:38] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 11:02:38] [DEBUG]: MQTT publish call.
+[2018-01-16 11:02:38] [DEBUG]: topic : v1/dev/myservice/hjkim1/telemetry
+[2018-01-16 11:02:38] [DEBUG]: {
+                                        "temp1":        30.89,
+                                                                "humi1": 49,
+        "light1":       239,
+                                "ts":   1516068158
+                                                  }
+[2018-01-16 11:02:38] [DEBUG]: payloadlen : 68
+[2018-01-16 11:02:38] [DEBUG]: qos : 1
+[2018-01-16 11:02:38] [DEBUG]: retained : 0
+[2018-01-16 11:02:38] [DEBUG]: dup : 0
+[2018-01-16 11:02:38] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 11:02:38] [INFO]: handleMQTTYield()
+
