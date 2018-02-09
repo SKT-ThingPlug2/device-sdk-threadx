@@ -182,19 +182,25 @@ int tpSimpleResult(RPCResponse* response) {
 
     cJSON_AddStringToObject(jsonObject, CMD, response->cmd);
     cJSON_AddNumberToObject(jsonObject, CMD_ID, response->cmdId);
-    cJSON_AddStringToObject(jsonObject, RESULT, response->result);
+    if(response->result) {
+        cJSON_AddStringToObject(jsonObject, RESULT, "success");
+    } else {
+        cJSON_AddStringToObject(jsonObject, RESULT, "fail");
+    }
 
     cJSON_AddStringToObject(rpcRspObject, JSONRPC, response->jsonrpc);
     cJSON_AddNumberToObject(rpcRspObject, ID, response->id);
-    size = response->resultArray->total;
-    for(i = 0; i < size; i++) {
-        element = (response->resultArray->element + i);
-        addElement(resultObject, element);
-    }
-    if(response->fail) {
-        cJSON_AddItemToObject(rpcRspObject, ERROR, resultObject);        
-    } else {
-        cJSON_AddItemToObject(rpcRspObject, RESULT, resultObject);
+    if( response->resultArray != NULL ) {
+        size = response->resultArray->total;
+        for(i = 0; i < size; i++) {
+            element = (response->resultArray->element + i);
+            addElement(resultObject, element);
+        }
+        if(response->result) {
+            cJSON_AddItemToObject(rpcRspObject, RESULT, resultObject);
+        } else {
+            cJSON_AddItemToObject(rpcRspObject, ERROR, resultObject);        
+        }
     }
     cJSON_AddItemToObject(jsonObject, RPC_RSP, rpcRspObject);
     jsonData = cJSON_Print(jsonObject);
