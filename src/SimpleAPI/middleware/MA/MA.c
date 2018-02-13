@@ -593,8 +593,10 @@ int MARun() {
     while (rc == 0 && mStep < PROCESS_END) {
         if(tpMQTTIsConnected() && mStep == PROCESS_TELEMETRY) {
             int rc = telemetry();
-            SKTDebugPrint(LOG_LEVEL_INFO,"send telemetry fail: %d", rc);
-            break;
+            if( rc != 0 ) {
+                SKTDebugPrint(LOG_LEVEL_INFO,"send telemetry fail: %d", rc);
+                break;
+            }
         } 
         // reconnect when disconnected
         else if(mConnectionStatus == DISCONNECTED) {
