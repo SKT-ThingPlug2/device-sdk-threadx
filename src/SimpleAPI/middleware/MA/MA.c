@@ -199,7 +199,7 @@ void MQTTMessageArrived(char* topic, char* msg, int msgLen) {
                 ArrayElement* resultArray = calloc(1, sizeof(ArrayElement));
                 resultArray->capacity = 2;
                 resultArray->element = calloc(1, sizeof(Element) * resultArray->capacity);
-                int errorCode = 106;
+                unsigned long errorCode = 106;
 
                 Element* item = resultArray->element + resultArray->total;
                 item->type = JSON_TYPE_LONG;
@@ -245,7 +245,7 @@ void MQTTMessageArrived(char* topic, char* msg, int msgLen) {
             if(!attribute) return;
             cJSON* act7colorLedObject = cJSON_GetObjectItemCaseSensitive(attribute, "act7colorLed");
             if(!act7colorLedObject) return;
-            int act7colorLed = act7colorLedObject->valueint;
+            unsigned long act7colorLed = act7colorLedObject->valueint;
             SKTDebugPrint(LOG_LEVEL_INFO, "act7colorLed : %d, %d", act7colorLed, cmdId);
             int rc = RGB_LEDControl(act7colorLed);
             if(rc != 0) {
@@ -419,7 +419,7 @@ static void attribute(void) {
     item = arrayElement->element + arrayElement->total;
     item->type = JSON_TYPE_LONG;
     item->name = "sysErrorCode";
-    int errorCode = 0;
+    unsigned long errorCode = 0;
     item->value = &errorCode;
     arrayElement->total++;
 
@@ -459,7 +459,7 @@ static void attribute(void) {
     item = arrayElement->element + arrayElement->total;
     item->type = JSON_TYPE_LONG;
     item->name = "act7colorLed";
-    int act7colorLed = 0;
+    unsigned long act7colorLed = 0;
     item->value = &act7colorLed;
     arrayElement->total++;
 
@@ -482,7 +482,7 @@ static void attribute(void) {
     SRAConvertCSVData( csv_attr, "1.0");
     //Serial
     SRAConvertCSVData( csv_attr, "710DJC5I10000290");
-    int errorCode = 0;
+    unsigned long errorCode = 0;
     snprintf( tmp, 64, "%d", errorCode);
     //Error code
     SRAConvertCSVData( csv_attr, tmp);
@@ -500,7 +500,7 @@ static void attribute(void) {
     //Longitude
     SRAConvertCSVData( csv_attr, "127.115479"); 
     //Led
-    int act7colorLed = 0;
+    unsigned long act7colorLed = 0;
     snprintf( tmp, 64, "%d", act7colorLed );
     SRAConvertCSVData( csv_attr, tmp);
     tpSimpleRawAttribute(csv_attr, FORMAT_CSV);
@@ -579,7 +579,7 @@ int start() {
 	int port = MQTT_PORT;
 #endif
     rc = tpSDKCreate(host, port, MQTT_KEEP_ALIVE, SIMPLE_DEVICE_TOKEN, NULL, 
-        1, subscribeTopics, TOPIC_SUBSCRIBE_SIZE, NULL, mClientID);
+        1, subscribeTopics, TOPIC_SUBSCRIBE_SIZE, NULL, mClientID, MQTT_CLEAN_SESSION);
     SKTDebugPrint(LOG_LEVEL_INFO, "tpSDKCreate result : %d", rc);
     return rc;
 }
