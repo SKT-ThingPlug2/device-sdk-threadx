@@ -94,7 +94,7 @@ void user_thread_entry(void)
         nx_dhcp_stop (&g_dhcp_client0);
         nx_dhcp_reinitialize (&g_dhcp_client0);
         dhcp_start();
-        g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, str, sizeof(str), TX_NO_WAIT);
- 
+        g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "program exit\r\n", sizeof("program exit\r\n"), TX_NO_WAIT);
+        return;
    }
 }

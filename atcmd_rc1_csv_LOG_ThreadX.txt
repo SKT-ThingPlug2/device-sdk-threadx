@@ -1,0 +1,262 @@
+ThreadX START!!
+DHCP Get IP
+192.168.0.11
+192.168.0.1
+NTP Socket Create ok
+NTP Socket Bind ok
+NTP Time Request ok
+NTP Time Receive ok
+[2018-01-16 17:26:58] [INFO]: ThingPlug_Simple_SDK
+[2018-01-16 17:26:58] [ATCOM]: AT+SKTPCON=1,MQTTS,xxx.xx.xxx.xxx,8883,120,simple_v1,devicetoken,myservice,mydevice
+[2018-01-16 17:26:58] [INFO]: handleMQTTSetCallbacks()
+[2018-01-16 17:26:58] [INFO]: tpMQTTSetCallbacks result : 0
+[2018-01-16 17:26:58] [INFO]: tpSimpleInitialize
+                                                serviceID : myservice, deviceID: mydevice
+[2018-01-16 17:26:58] [INFO]: tpSimpleInitialize : 0
+[2018-01-16 17:26:58] [INFO]: client id : hjkim1csv_A1:B2:C3:D4:E
+[2018-01-16 17:26:58] [INFO]: handleMQTTCreate()
+[2018-01-16 17:26:58] [INFO]:  host = xxx.xx.xxx.xxx
+[2018-01-16 17:26:58] [INFO]:  port = 8883
+[2018-01-16 17:26:58] [INFO]:  keepalive = 120
+[2018-01-16 17:26:58] [INFO]:  userName = devicetoken
+[2018-01-16 17:26:58] [INFO]:  password = 0
+[2018-01-16 17:26:58] [INFO]:  enableServerCertAuth = 1
+[2018-01-16 17:26:58] [INFO]:  subscribeTopic = v1/dev/myservice/mydevice/down
+[2018-01-16 17:26:58] [INFO]:  subscribeTopicCnt = 1
+[2018-01-16 17:26:58] [INFO]:  publishTopic = 0
+[2018-01-16 17:26:58] [INFO]:  enabledCipherSuites = 0
+[2018-01-16 17:26:58] [INFO]:  cleanSession = 1
+[2018-01-16 17:26:58] [INFO]:  clientID = hjkim1csv_A1:B2:C3:D4:E
+[2018-01-16 17:26:58] [INFO]: Use secure(TLS) socket
+[2018-01-16 17:26:59] [INFO]: clientID =>
+[2018-01-16 17:26:59] [INFO]: hjkim1csv_A1:B2:C3:D4:E
+[2018-01-16 17:26:59] [INFO]: MQTT Connected
+[2018-01-16 17:26:59] [INFO]: MQTTConnected result : 0
+[2018-01-16 17:26:59] [INFO]: CONNECTION_STATUS : 2
+[2018-01-16 17:26:59] [ATCOM]: +SKTPCON=0
+[2018-01-16 17:26:59] [INFO]: MQTT Request Subscribe topic =>
+[2018-01-16 17:26:59] [INFO]: v1/dev/myservice/mydevice/down
+[2018-01-16 17:26:59] [INFO]: MQTTSubscribed result : 0
+[2018-01-16 17:26:59] [ATCOM]: AT+SKTPDAT=1,attribute,1,3263,2.0.0,1.0,710DJC5I10000290,0,ethe
+[2018-01-16 17:26:59] [INFO]: tpSimpleRawAttribute
+                                                  topic : v1/dev/myservice/mydevice/attribute/csv
+                         3263,2.0.0,1.0,710DJC5I10000290,0,ethernet,192.168.0.11,xxx.xx.xxx.xxx,37.380257,127.115479,0
+[2018-01-16 17:26:59] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:26:59] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:26:59] [ATCOM]: OK
+[2018-01-16 17:26:59] [INFO]: tpSDKCreate result : 0
+[2018-01-16 17:26:59] [ATCOM]: OK
+[2018-01-16 17:26:59] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:26:59] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091219,20.16,46,216
+[2018-01-16 17:26:59] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091219,20.16,46,216
+[2018-01-16 17:26:59] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:26:59] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:26:59] [ATCOM]: OK
+[2018-01-16 17:26:59] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:26:59] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:26:59] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:07] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:27:07] [INFO]: paylaod->
+[2018-01-16 17:27:07] [INFO]: {"serviceName":"myservice","deviceName":"mydevice","cmdId":6,"cmd":"jsonRpc","rpcMode":"oneway","rpcReq":{"jsonrpc":"2.0","method":"tp_user","params":[{"act7colorLed":"5"}],"id":686220467}}
+[2018-01-16 17:27:07] [INFO]: RPC_USER
+[2018-01-16 17:27:07] [ATCOM]: +SKTPCMD=tp_user,686220467,3,[{"act7colorLed":"5"}]
+[2018-01-16 17:27:07] [INFO]:
+rpc : 2.0,
+id : 686220467,
+cmd : 0
+[2018-01-16 17:27:07] [INFO]: tpSimpleRawResult
+                                               topic : v1/dev/myservice/mydevice/up
+           {"cmd":"jsonRpc","cmdId":1,"result":"success","rpcRsp":{"jsonrpc":"2.0","id":686220467,"method":"tp_user","result":{"act7colorLed":0}}}
+[2018-01-16 17:27:07] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:07] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:07] [ATCOM]: OK
+[2018-01-16 17:27:07] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:07] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091227,21.44,44,244
+[2018-01-16 17:27:07] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091227,21.44,44,244
+[2018-01-16 17:27:07] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:07] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:07] [ATCOM]: OK
+[2018-01-16 17:27:07] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:07] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:07] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:08] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:27:08] [INFO]: paylaod->
+[2018-01-16 17:27:08] [INFO]: {"serviceName":"myservice","deviceName":"mydevice","cmdId":7,"cmd":"jsonRpc","rpcMode":"twoway","rpcReq":{"jsonrpc":"2.0","method":"tp_user","params":[{"act7colorLed":"6"}],"id":686220468}}
+[2018-01-16 17:27:08] [INFO]: RPC_USER
+[2018-01-16 17:27:08] [ATCOM]: +SKTPCMD=tp_user,686220468,1,[{"act7colorLed":"6"}]
+[2018-01-16 17:27:08] [INFO]:
+rpc : 2.0,
+id : 686220468,
+cmd : 0
+[2018-01-16 17:27:08] [ATCOM]: AT+SKTPRES=1,686220468,0,{"act7colorLed":0}
+[2018-01-16 17:27:08] [INFO]: tpSimpleRawResult
+                                               topic : v1/dev/myservice/mydevice/up
+           {"cmd":"jsonRpc","cmdId":1,"result":"success","rpcRsp":{"jsonrpc":"2.0","id":686220468,"method":"tp_user","result":{"act7colorLed":0}}}
+[2018-01-16 17:27:08] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:08] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:08] [ATCOM]: OK
+[2018-01-16 17:27:08] [ATCOM]: +SKTPCMD=tp_user,686220468,3
+[2018-01-16 17:27:08] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:08] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091228,21.69,49,219
+[2018-01-16 17:27:08] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091228,21.69,49,219
+[2018-01-16 17:27:08] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:08] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:08] [ATCOM]: OK
+[2018-01-16 17:27:08] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:08] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:08] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:15] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:27:15] [INFO]: paylaod->
+[2018-01-16 17:27:15] [INFO]: {"serviceName":"myservice","deviceName":"mydevice","cmdId":-9999,"cmd":"jsonRpc","rpcMode":"oneway","rpcReq":{"jsonrpc":"2.0","method":"tp_remote","params":["AT+CPSMS=1,,,01000001,00100011"],"id":686220469}}
+[2018-01-16 17:27:15] [INFO]: RPC_REMOTE
+[2018-01-16 17:27:15] [ATCOM]: +SKTPCMD=tp_remote,686220469,1,["AT+CPSMS=1,,,01000001,00100011"]
+[2018-01-16 17:27:15] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:15] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091235,24.00,40,200
+[2018-01-16 17:27:15] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091235,24.00,40,200
+[2018-01-16 17:27:15] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:15] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:15] [ATCOM]: OK
+[2018-01-16 17:27:15] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:15] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:15] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:25] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:25] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091245,29.00,40,200
+[2018-01-16 17:27:25] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091245,29.00,40,200
+[2018-01-16 17:27:25] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:25] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:25] [ATCOM]: OK
+[2018-01-16 17:27:25] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:25] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:25] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:27] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:27:27] [INFO]: paylaod->
+[2018-01-16 17:27:27] [INFO]: {"serviceName":"myservice","deviceName":"mydevice","cmdId":-9999,"cmd":"jsonRpc","rpcMode":"twoway","rpcReq":{"jsonrpc":"2.0","method":"tp_remote","params":["AT+CPSMS=1,,,01000001,00100011"],"id":686220470}}
+[2018-01-16 17:27:27] [INFO]: RPC_REMOTE
+[2018-01-16 17:27:27] [ATCOM]: +SKTPCMD=tp_remote,686220470,1,["AT+CPSMS=1,,,01000001,00100011"]
+[2018-01-16 17:27:27] [ATCOM]: +SKTPCMD=tp_remote,686220470,3
+[2018-01-16 17:27:27] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:27] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091247,30.24,44,224
+[2018-01-16 17:27:27] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091247,30.24,44,224
+[2018-01-16 17:27:27] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:27] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:27] [ATCOM]: OK
+[2018-01-16 17:27:27] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:27] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:27] [INFO]: handleMQTTYield()
+[2018-01-16 17:27:32] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:27:32] [INFO]: paylaod->
+[2018-01-16 17:27:32] [INFO]: {"deviceId":"416e59e0-fa78-11e7-8ba2-6f996b68699e","cmdId":1300292165,"cmd":"setAttribute","attribute":{"act7colorLed":2}}
+[2018-01-16 17:27:32] [ATCOM]: +SKTPCMD=set_attr,1300292165,3,{"act7colorLed":2}
+[2018-01-16 17:27:32] [ATCOM]: act7colorLed : 2, 1300292165
+[2018-01-16 17:27:32] [INFO]: tpSimpleRawAttribute
+                                                  topic : v1/dev/myservice/mydevice/attribute/csv
+                         ,,,,,,,,,,2
+[2018-01-16 17:27:32] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:32] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:32] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:27:32] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091252,33.69,49,219
+[2018-01-16 17:27:32] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091252,33.69,49,219
+[2018-01-16 17:27:32] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:27:32] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:27:32] [ATCOM]: OK
+[2018-01-16 17:27:32] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:27:32] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:27:32] [INFO]: handleMQTTYield()
+[2018-01-16 17:29:12] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:29:12] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091352,57.69,49,219
+[2018-01-16 17:29:12] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091352,57.69,49,219
+[2018-01-16 17:29:12] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:29:12] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:29:12] [ATCOM]: OK
+[2018-01-16 17:29:12] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:29:12] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:29:12] [INFO]: handleMQTTYield()
+[2018-01-16 17:29:22] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:29:22] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091362,36.09,49,209
+[2018-01-16 17:29:22] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091362,36.09,49,209
+[2018-01-16 17:29:22] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:29:22] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:29:22] [ATCOM]: OK
+[2018-01-16 17:29:22] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:29:22] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:29:22] [INFO]: handleMQTTYield()
+[2018-01-16 17:29:32] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:29:32] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091372,66.49,49,249
+[2018-01-16 17:29:32] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091372,66.49,49,249
+[2018-01-16 17:29:32] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:29:32] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:29:32] [ATCOM]: OK
+[2018-01-16 17:29:32] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:29:32] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:29:32] [INFO]: handleMQTTYield()
+[2018-01-16 17:29:42] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:29:42] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091382,48.89,49,239
+[2018-01-16 17:29:42] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091382,48.89,49,239
+[2018-01-16 17:29:42] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:29:42] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:29:42] [ATCOM]: OK
+[2018-01-16 17:29:42] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:29:42] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:29:42] [INFO]: handleMQTTYield()
+[2018-01-16 17:29:52] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:29:52] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091392,33.29,49,229
+[2018-01-16 17:29:52] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091392,33.29,49,229
+[2018-01-16 17:29:52] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:29:52] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:29:52] [ATCOM]: OK
+[2018-01-16 17:29:52] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:29:52] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:29:52] [INFO]: handleMQTTYield()
+[2018-01-16 17:30:02] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:30:02] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091402,69.69,49,219
+[2018-01-16 17:30:02] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091402,69.69,49,219
+[2018-01-16 17:30:02] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:30:02] [INFO]: MQTTMessageArrived topic : v1/dev/myservice/mydevice/down
+[2018-01-16 17:30:02] [INFO]: paylaod->
+[2018-01-16 17:30:02] [INFO]: {"serviceName":"myservice","deviceName":"mydevice","cmdId":-9999,"cmd":"jsonRpc","rpcMode":"twoway","rpcReq":{"jsonrpc":"2.0","method":"tp_fwupgrade","params":["http://xxx.xx.xxx.xxx:80/portal/services/myservice/firmwares/6/43a79823-53b1-4405-958b-6da264814c7e/download","http://xxx.xx.xxx.xxx:80/portal/firmware-upgrade-devices/13/43a79823-53b1-4405-958b-6da264814c7e"],"id":686220471}}
+[2018-01-16 17:30:02] [INFO]: RPC_FIRMWARE_UPGRADE
+[2018-01-16 17:30:02] [ATCOM]: +SKTPCMD=tp_fwupgrade,686220471,1,["http://xxx.xx.xxx.xxx:80/portal/services/myservice/firmwares/6/43a79823-53b1-4405-958b-6da264814c7e/download","http://xxx.xx.xxx.xxx:80/portal/firmware-upgrade-devices/13/43a79823-53b1-4405-958b-6da264814c7e"]
+[2018-01-16 17:30:02] [ATCOM]: +SKTPCMD=tp_fwupgrade,686220471,3
+[2018-01-16 17:30:02] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:30:02] [ATCOM]: OK
+[2018-01-16 17:30:02] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:30:02] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:30:02] [INFO]: handleMQTTYield()
+[2018-01-16 17:30:12] [INFO]: handleMQTTIsConnected()
+[2018-01-16 17:30:12] [ATCOM]: AT+SKTPDAT=1,telemetry,1,1516091412,58.09,49,209
+[2018-01-16 17:30:12] [INFO]: tpSimpleRawTelemetry
+                                                  topic : v1/dev/myservice/mydevice/telemetry/csv
+                         1516091412,58.09,49,209
+[2018-01-16 17:30:12] [INFO]: handleMQTTPublishMessageWithTopic()
+[2018-01-16 17:30:12] [INFO]: MQTTMessageDelivered token : 0, step : 2
+[2018-01-16 17:30:12] [ATCOM]: OK
+[2018-01-16 17:30:12] [ATCOM]: AT+SKTPERR=1
+[2018-01-16 17:30:12] [ATCOM]: result : +SKTPE:0
+[2018-01-16 17:30:12] [INFO]: handleMQTTYield()
+
