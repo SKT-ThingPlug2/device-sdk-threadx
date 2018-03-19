@@ -14,7 +14,7 @@
 #include <string.h>
 #include <time.h>
 
-#define __DUMMY_DATA_
+//#define __DUMMY_DATA_
 #include <SimpleAPI/middleware/SMA/SMA.h>
 #ifndef __DUMMY_DATA_
 #include <SimpleAPI/middleware/SMA/I2C.h>

@@ -68,6 +68,7 @@ void dhcp_start(void)
 /* User Thread entry function */
 void user_thread_entry(void)
 {
+    SensorReady();
     g_timer0.p_api->open(g_timer0.p_ctrl, g_timer0.p_cfg);
     tx_thread_sleep(200);
     g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "ThreadX START!!\r\n", sizeof("ThreadX START!!\r\n"), TX_NO_WAIT);

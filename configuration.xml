@@ -159,16 +159,28 @@
       <description>Express Logic USBX Device Class CDC ACM: Provides=[USBX Device Class CDC ACM] , Requires=[ThreadX ,USBX]</description>
       <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_icu" variant="" vendor="Renesas" version="1.2.0">
+      <description>External IRQ: Provides=[External IRQ]</description>
+      <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_rspi" variant="" vendor="Renesas" version="1.2.0">
+      <description>RSPI: Provides=[SPI]</description>
+      <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Framework Services" condition="" group="all" subgroup="sf_wifi_rtl8189em" variant="" vendor="Renesas" version="1.2.0">
+      <description>RTL8189EM Wi-Fi Framework: Add-On v1.0.0, Provides=[SF RTL8189EM Wi-Fi Framework] , Requires=[ThreadX ,sf_wifi_nsal_nx]</description>
+      <originalPack>Renesas.Synergy_wifi_rtl8189em.1.2.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Framework Services" condition="" group="all" subgroup="sf_wifi_nsal_nx" variant="" vendor="Renesas" version="1.2.0">
+      <description>NSAL: Add-On v1.0.0, Provides=[SF Wi-Fi NSAL NX] , Requires=[ThreadX ,sf_wifi]</description>
+      <originalPack>Renesas.Synergy_wifi_gt202.1.2.0.pack</originalPack>
+    </component>
     <component apiversion="" class="Express Logic" condition="" group="all" subgroup="nx_dns" variant="" vendor="Renesas" version="1.2.0">
       <description>Express Logic NetX DNS: Provides=[NetX DNS] , Requires=[NetX]</description>
       <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
     </component>
     <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_sci_i2c" variant="" vendor="Renesas" version="1.2.0">
       <description>SCI I2C: Provides=[I2C Master] , Requires=[SCI Common]</description>
-      <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="Framework Services" condition="" group="all" subgroup="sf_el_nx" variant="" vendor="Renesas" version="1.2.0">
-      <description>Express Logic NetX Synergy Port: Provides=[NetX Driver] , Requires=[NetX]</description>
       <originalPack>Renesas.Synergy.1.2.0.pack</originalPack>
     </component>
   </synergyComponentSelection>
@@ -278,6 +290,67 @@
       <property id="module.framework.sf_el_ux_dcd_fs.name" value="g_sf_el_ux_dcd_fs_0"/>
       <property id="module.framework.sf_el_ux_dcd_fs.hw_address" value="R_USBFS_BASE"/>
     </module>
+    <module id="module.framework.sf_wifi_nsal_nx_v2.1299297887">
+      <property id="module.framework.sf_el_nx.name" value="g_sf_el_nx0"/>
+    </module>
+    <module id="module.framework.sf_wifi_rtl8189em_v2.641182290">
+      <property id="module.framework.sf_wifi_v2.name" value="g_sf_wifi0"/>
+      <property id="module.framework.sf_wifi_v2.hw_mode" value="module.framework.sf_wifi_v2.hw_mode.802_11n"/>
+      <property id="module.framework.sf_wifi_v2.tx_power" value="10"/>
+      <property id="module.framework.sf_wifi_v2.rts" value="module.framework.sf_wifi_v2.rts.enabled"/>
+      <property id="module.framework.sf_wifi_v2.dtim" value="3"/>
+      <property id="module.framework.sf_wifi_v2.ssid_broadcast" value="module.framework.sf_wifi_v2.ssid_broadcast.enabled"/>
+      <property id="module.framework.sf_wifi_v2.beacon" value="1024"/>
+      <property id="module.framework.sf_wifi_v2.station_inactivity_timeout" value="100"/>
+      <property id="module.framework.sf_wifi_v2.req_high_throughput" value="module.framework.sf_wifi_v2.req_high_throughput.disabled"/>
+      <property id="module.framework.sf_wifi_v2.pin_irq" value="IOPORT_PORT_04_PIN_00"/>
+      <property id="module.framework.sf_wifi_v2.pin_slave_select" value="IOPORT_PORT_04_PIN_13"/>
+      <property id="module.framework.sf_wifi_v2.driver_task_priority" value="4"/>
+    </module>
+    <module id="module.driver.external_irq_on_icu.1005416271">
+      <property id="module.driver.external_irq.name" value="g_external_irq0"/>
+      <property id="module.driver.external_irq.channel" value="0"/>
+      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_rising"/>
+      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.false"/>
+      <property id="module.driver.external_irq.pclk_div" value="module.driver.external_irq.pclk_div.pclk_div_by_64"/>
+      <property id="module.driver.external_irq.interrupt_enable" value="module.driver.external_irq.interrupt_enable.true"/>
+      <property id="module.driver.external_irq.p_callback" value="NULL"/>
+      <property id="module.driver.external_irq.irq_ipl" value="board.icu.common.irq.priority6"/>
+    </module>
+    <module id="module.driver.spi_on_rspi.1824958309">
+      <property id="module.driver.spi.name" value="g_spi0"/>
+      <property id="module.driver.spi.channel" value="0"/>
+      <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_odd"/>
+      <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_low"/>
+      <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
+      <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
+      <property id="module.driver.spi.bitrate" value="500000"/>
+      <property id="module.driver.spi.p_callback" value="NULL"/>
+      <property id="module.driver.spi.rspi_clksyn" value="module.driver.spi.rspi_clksyn.spi_operation"/>
+      <property id="module.driver.spi.rspi_comm" value="module.driver.spi.rspi_comm.full_duplex"/>
+      <property id="module.driver.spi.sslp0" value="module.driver.spi.sslp0.low"/>
+      <property id="module.driver.spi.sslp1" value="module.driver.spi.sslp1.low"/>
+      <property id="module.driver.spi.sslp2" value="module.driver.spi.sslp2.low"/>
+      <property id="module.driver.spi.sslp3" value="module.driver.spi.sslp3.low"/>
+      <property id="module.driver.spi.looback1" value="module.driver.spi.looback1.normal"/>
+      <property id="module.driver.spi.looback2" value="module.driver.spi.looback2.normal"/>
+      <property id="module.driver.spi.mosi_idle_enable" value="module.driver.spi.mosi_idle_enable.disable"/>
+      <property id="module.driver.spi.mosi_idle_value" value="module.driver.spi.mosi_idle_value.low"/>
+      <property id="module.driver.spi.parity_enable" value="module.driver.spi.parity_enable.disable"/>
+      <property id="module.driver.spi.parity_mode" value="module.driver.spi.parity_mode.odd"/>
+      <property id="module.driver.spi.ssl_select" value="module.driver.spi.ssl_select.zero"/>
+      <property id="module.driver.spi.ssl_level_keep" value="module.driver.spi.ssl_level_keep.not_keep"/>
+      <property id="module.driver.spi.clock_delay_enable" value="module.driver.spi.clock_delay_enable.disable"/>
+      <property id="module.driver.spi.clock_delay_val" value="module.driver.spi.clock_delay_val.one"/>
+      <property id="module.driver.spi.rspi_ssl_neg_delay_state" value="module.driver.spi.rspi_ssl_neg_delay_state.disable"/>
+      <property id="module.driver.spi.rspi_ssl_neg_delay_count" value="module.driver.spi.rspi_ssl_neg_delay_count.one"/>
+      <property id="module.driver.spi.rspi_next_access_delay_state" value="module.driver.spi.rspi_next_access_delay_state.disable"/>
+      <property id="module.driver.spi.rspi_next_access_delay_count" value="module.driver.spi.rspi_next_access_delay_count.one"/>
+      <property id="module.driver.spi.rxi_ipl" value="board.icu.common.irq.priority2"/>
+      <property id="module.driver.spi.txi_ipl" value="board.icu.common.irq.priority2"/>
+      <property id="module.driver.spi.eri_ipl" value="board.icu.common.irq.priority2"/>
+    </module>
     <module id="module.el.nx_dns_client.1769421011">
       <property id="module.el.nx_dns_client.name" value="g_dns0"/>
     </module>
@@ -293,11 +366,6 @@
       <property id="module.driver.i2c.rxi_ipl" value="board.icu.common.irq.priority10"/>
       <property id="module.driver.i2c.txi_ipl" value="board.icu.common.irq.priority10"/>
       <property id="module.driver.i2c.tei_ipl" value="board.icu.common.irq.priority10"/>
-    </module>
-    <module id="module.framework.sf_el_nx.954913613">
-      <property id="module.framework.sf_el_nx.name" value="g_sf_el_nx"/>
-      <property id="module.framework.sf_el_nx.channel" value="1"/>
-      <property id="module.framework.sf_el_nx.callback" value="NULL"/>
     </module>
     <context id="_hal.0">
       <stack module="module.driver.cgc_on_cgc.0"/>
@@ -319,7 +387,12 @@
           <stack module="module.el.nx.packet_pool.1065016260" requires="module.el.nx.ip.requires.nx.packet_pool">
             <stack module="module.el.nx_common.243134008" requires="module.el.nx.packet_pool.requires.nx_common"/>
           </stack>
-          <stack module="module.framework.sf_el_nx.954913613" requires="module.el.nx.ip.requires.sf_el_nx"/>
+          <stack module="module.framework.sf_wifi_nsal_nx_v2.1299297887" requires="module.el.nx.ip.requires.sf_el_nx">
+            <stack module="module.framework.sf_wifi_rtl8189em_v2.641182290" requires="module.framework.sf_wifi_nsal_nx_v2.requires.sf_wifi_v2">
+              <stack module="module.driver.spi_on_rspi.1824958309" requires="module.framework.sf_wifi_v2.requires.spi"/>
+              <stack module="module.driver.external_irq_on_icu.1005416271" requires="module.framework.sf_wifi_v2.requires.external_irq"/>
+            </stack>
+          </stack>
         </stack>
         <stack module="module.el.nx_dhcp_common.1983194308" requires="module.el.nx_dhcp_client.requires.nx_dhcp_common"/>
       </stack>
@@ -347,7 +420,12 @@
           <stack module="module.el.nx.packet_pool.1065016260" requires="module.el.nx.ip.requires.nx.packet_pool">
             <stack module="module.el.nx_common.243134008" requires="module.el.nx.packet_pool.requires.nx_common"/>
           </stack>
-          <stack module="module.framework.sf_el_nx.954913613" requires="module.el.nx.ip.requires.sf_el_nx"/>
+          <stack module="module.framework.sf_wifi_nsal_nx_v2.1299297887" requires="module.el.nx.ip.requires.sf_el_nx">
+            <stack module="module.framework.sf_wifi_rtl8189em_v2.641182290" requires="module.framework.sf_wifi_nsal_nx_v2.requires.sf_wifi_v2">
+              <stack module="module.driver.spi_on_rspi.1824958309" requires="module.framework.sf_wifi_v2.requires.spi"/>
+              <stack module="module.driver.external_irq_on_icu.1005416271" requires="module.framework.sf_wifi_v2.requires.external_irq"/>
+            </stack>
+          </stack>
         </stack>
       </stack>
     </context>
@@ -377,17 +455,9 @@
       <property id="config.framework.sf_comms.read_size" value="128"/>
       <property id="config.framework.sf_comms.timeout" value="1000"/>
     </config>
-    <config id="config.framework.sf_el_nx">
-      <property id="config.framework.sf_el_nx.param_checking_enable" value="config.framework.sf_el_nx.param_checking_enable.bsp"/>
-      <property id="config.framework.sf_el_nx.pin0" value="IOPORT_PORT_09_PIN_03"/>
-      <property id="config.framework.sf_el_nx.mach0" value="0x00002E09"/>
-      <property id="config.framework.sf_el_nx.macl0" value="0x0A0076C7"/>
-      <property id="config.framework.sf_el_nx.pin1" value="IOPORT_PORT_08_PIN_06"/>
-      <property id="config.framework.sf_el_nx.mach1" value="0x00002E09"/>
-      <property id="config.framework.sf_el_nx.macl1" value="0x0A0076C8"/>
-      <property id="config.framework.sf_el_nx.num_rx_desc" value="8"/>
-      <property id="config.framework.sf_el_nx.num_tx_desc" value="32"/>
-      <property id="config.framework.sf_el_nx.irq_ipl" value="board.icu.common.irq.priority3"/>
+    <config id="config.framework.sf_wifi_rtl8189em_v2">
+      <property id="config.framework.sf_wifi_v2.param_checking_enable" value="config.framework.sf_wifi_v2.param_checking_enable.bsp"/>
+      <property id="config.framework.sf_wifi_v2.debug_uart_support_rtl8189em" value="config.framework.sf_wifi_v2.debug_uart_support_rtl8189em.disabled"/>
     </config>
     <config id="config.driver.cgc">
       <property id="config.driver.cgc.param_checking_enable" value="config.driver.cgc.param_checking_enable.bsp"/>
@@ -478,13 +548,22 @@
     <config id="config.driver.sci_i2c">
       <property id="config.driver.sci_i2c.param_checking_enable" value="config.driver.sci_i2c.param_checking_enable.bsp"/>
     </config>
+    <config id="config.driver.icu">
+      <property id="config.driver.icu.param_checking_enable" value="config.driver.icu.param_checking_enable.bsp"/>
+    </config>
     <config id="config.driver.fmi">
       <property id="config.driver.fmi.param_checking_enable" value="config.driver.fmi.param_checking_enable.bsp"/>
       <property id="config.driver.fmi.custom_base_address_symbol" value="g_fmi_data"/>
       <property id="config.driver.fmi.part_number_mask" value="0xFE00"/>
     </config>
+    <config id="config.framework.sf_wifi_nsal_nx_v2">
+      <property id="module.framework.sf_wifi_nsal_nx_v2.param_checking_enable" value="config.framework.sf_wifi_nsal_nx_v2.param_checking_enable.bsp"/>
+    </config>
     <config id="config.driver.elc">
       <property id="config.driver.elc.checking" value="config.driver.elc.checking.system"/>
+    </config>
+    <config id="config.driver.rspi">
+      <property id="config.driver.rspi.param_checking_enable" value="config.driver.rspi.param_checking_enable.bsp"/>
     </config>
   </synergyModuleConfiguration>
   <synergyPinConfiguration>
