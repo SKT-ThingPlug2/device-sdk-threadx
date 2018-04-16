@@ -31,8 +31,16 @@ extern char* gatewayIpAddress;
 extern void setIpAddress(char *ip, char *gw);
 extern int ThingPlug_Simple_SDK(void);
 
+int dhcp_flag = 0;
+#define DHCP_MAX 3
+
 void dhcp_start(void)
 {
+    if(dhcp_flag < DHCP_MAX) {
+        tx_thread_sleep(dhcp_flag * 5 * 10000);
+    } else {
+        return;
+    }
     status = nx_ip_fragment_enable (&g_ip0);
     if (status != NX_SUCCESS)
         error_counter++;
@@ -51,6 +59,8 @@ void dhcp_start(void)
 
     if(error_counter) {
         g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "DHCP IP Error\r\n", sizeof("DHCP IP Error\r\n"), TX_NO_WAIT);
+    } else {
+        dhcp_flag++;
     }
     g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "DHCP Get IP\r\n", sizeof("DHCP Get IP\r\n"), TX_NO_WAIT);
     {
@@ -74,13 +84,16 @@ void user_thread_entry(void)
         
     dhcp_start();
 
+    int ntp_flag = 0;
     while(1) {
 	int loop_cnt = NTP_RETRY_COUNT;
-        while(loop_cnt--) {
-	    status = NTPSetTimer();
-	    if( status == 0)
-	        break;
-	}
+        while(ntp_flag != 1 && loop_cnt--) { 
+            status = NTPSetTimer(); 
+            if( status == 0) { 
+                ntp_flag = 1; 
+                break; 
+            } 
+        } 
 
         ThingPlug_Simple_SDK();
         tx_thread_sleep(500);
@@ -91,8 +104,10 @@ void user_thread_entry(void)
             nx_ip_status_check( &g_ip0, NX_IP_LINK_ENABLED, (ULONG *) &status, 10);
             tx_thread_sleep(500);
         }
-        nx_dhcp_stop (&g_dhcp_client0);
-        nx_dhcp_reinitialize (&g_dhcp_client0);
+        if(dhcp_flag < DHCP_MAX) {
+            nx_dhcp_stop (&g_dhcp_client0);
+            nx_dhcp_reinitialize (&g_dhcp_client0);
+        }
         dhcp_start();
         g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, str, sizeof(str), TX_NO_WAIT);
  

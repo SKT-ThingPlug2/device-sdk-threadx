@@ -58,7 +58,7 @@ typedef struct
 static char mTopicControlDown[SIZE_TOPIC] = "";
 static char mClientID[SIZE_CLIENT_ID] = "";
 
-static void attribute();
+static int attribute();
 static int telemetry();
 static char* make_response(RPCResponse *rsp, char* resultBody);
 
@@ -75,7 +75,6 @@ void MQTTConnected(int result) {
 
 void MQTTSubscribed(int result) {
     SKTDebugPrint(LOG_LEVEL_INFO, "MQTTSubscribed result : %d", result);
-    attribute();
 }
 
 void MQTTDisconnected(int result) {
@@ -383,8 +382,8 @@ static int getNetworkInfo(NetworkInfo* info, char* interface) {
     return 0;
 }
 
-static void attribute(void) {
-
+static int attribute(void) {
+    int rc;
 #ifdef JSON_FORMAT
     ArrayElement* arrayElement = calloc(1, sizeof(ArrayElement));
     
@@ -463,7 +462,7 @@ static void attribute(void) {
     item->value = &act7colorLed;
     arrayElement->total++;
 
-    tpSimpleAttribute(arrayElement);
+    rc = tpSimpleAttribute(arrayElement);
     free(arrayElement->element);
     free(arrayElement);
 
@@ -503,10 +502,11 @@ static void attribute(void) {
     unsigned long act7colorLed = 0;
     snprintf( tmp, 64, "%d", act7colorLed );
     SRAConvertCSVData( csv_attr, tmp);
-    tpSimpleRawAttribute(csv_attr, FORMAT_CSV);
+    rc = tpSimpleRawAttribute(csv_attr, FORMAT_CSV);
     
     mStep = PROCESS_TELEMETRY;
 #endif
+    return rc;
 }
 
 static char* make_response(RPCResponse *rsp, char* resultBody) {
@@ -589,6 +589,12 @@ int MARun() {
     SKTDebugInit(1, LOG_LEVEL_INFO);
     SKTDebugPrint(LOG_LEVEL_VERBOSE, "ThingPlug_Simple_SDK");
     rc = start();
+    if(rc != 0) return 0;
+    rc = attribute();
+    if(rc != 0) {
+        tpSDKDestroy();
+        return 0;
+    }
 
     while (rc == 0 && mStep < PROCESS_END) {
         if(tpMQTTIsConnected() && mStep == PROCESS_TELEMETRY) {

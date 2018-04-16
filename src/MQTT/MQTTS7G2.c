@@ -114,12 +114,15 @@ int s7g2_write(Network* n, unsigned char* buffer, int len, int timeout_ms)
   return len;
 }
 
+static int connect_flag = 0;
+
 void s7g2_disconnect(Network* n) 
 {
   n->byte_ip = 0;
   nx_tcp_socket_disconnect(&n->my_socket, 200);
   nx_tcp_client_socket_unbind(&n->my_socket);
   nx_tcp_socket_delete(&n->my_socket);
+  connect_flag = 0;
 }
 
 
@@ -132,42 +135,86 @@ void NewNetwork(Network* n) {
   n->disconnect = s7g2_disconnect;
 }
 
+int ip_check(char *ip) 
+{ 
+    if(strcmp(ip, " ") == 0) 
+    { 
+        return -1; 
+    } 
+ 
+    int len = strlen(ip); 
+ 
+    if( len > 15 || len < 7 ) 
+        return -1; 
+ 
+    int nNumCount = 0; 
+    int nDotCount = 0; 
+    int i = 0; 
+ 
+    for( i=0; i<len; i++) 
+    { 
+        if(ip[i] < '0' || ip[i] > '9') 
+        { 
+            if(ip[i] == '.') 
+            { 
+                ++nDotCount; 
+                nNumCount = 0; 
+            } 
+            else 
+                return -1; 
+        } 
+        else 
+        { 
+            if(++nNumCount > 3) 
+                return -1; 
+        } 
+    } 
+ 
+    if(nDotCount != 3) 
+        return -1; 
+ 
+    return 1; 
+} 
+
 int ConnectNetwork(Network* n, char* addr, unsigned int port)
 {
   UINT status;
   UCHAR record_buffer[200];
   UINT record_count;
-  UINT error_count = 0;
 
+  connect_flag = 0;
   status = nx_tcp_socket_create(n->my_ip, &n->my_socket, "MqttSocket", NX_IP_NORMAL, NX_DONT_FRAGMENT, NX_IP_TIME_TO_LIVE, 512, NX_NULL, NX_NULL);
-  if (status)error_count++;
+  if (status) {
+      return -1;
+  }
   status =  nx_tcp_client_socket_bind(&n->my_socket, NX_ANY_PORT, 10000);
-  if (status)error_count++;
+  if (status) {
+      nx_tcp_socket_delete(&n->my_socket);
+      return -1;
+  }
 
-  if( strncmp("http://", addr, sizeof("http://")) == 0 ) {
-      status = nx_dns_server_add(&g_dns0, IP_ADDRESS(8,8,8,8));
-      if (status)error_count++;
-      status = nx_dns_ipv4_address_by_name_get(&g_dns0, (UCHAR*)addr, (VOID *)&record_buffer[0], 200, &record_count, 400);
-      if (status)error_count++;
-      n->byte_ip = *((ULONG *)(record_buffer));
-  } else {
+  if( ip_check(addr) == 1) {
       int ip1,ip2,ip3,ip4;
       sscanf(addr,"%d.%d.%d.%d",&ip1,&ip2,&ip3,&ip4);
       n->byte_ip = IP_ADDRESS(ip1,ip2,ip3,ip4);
+  } else {
+      nx_dns_server_add(&g_dns0, IP_ADDRESS(8,8,8,8)); 
+      nx_dns_ipv4_address_by_name_get(&g_dns0, (UCHAR*)addr, (VOID *)&record_buffer[0], 200, &record_count, 400); 
+      n->byte_ip = *((ULONG *)(record_buffer)); 
   }
   status =  nx_tcp_client_socket_connect(&n->my_socket, n->byte_ip, port, 2000);
-  if (status)error_count++;
-  if (error_count != 0)
-	  return -1;
+ if (status) { 
+      nx_tcp_client_socket_unbind(&n->my_socket); 
+      nx_tcp_socket_delete(&n->my_socket); 
+      return -1; 
+  } 
+  connect_flag = 1; 
   return 0;
 }
 
 int IsNetworkConnected(Network* n)
 {
-    if(n->byte_ip != 0)
-        return 1;
-    else
-        return 0;
+  return connect_flag;
 }
 
 void NetworkDisconnect(Network* n)

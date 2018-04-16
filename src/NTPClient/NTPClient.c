@@ -69,6 +69,7 @@ int NTPSetTimer(void)
     if ( result != NX_SUCCESS )
     {
         g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "NTP Socket Bind error\r\n", sizeof("NTP Socket Bind error\r\n"), TX_NO_WAIT);
+        nx_udp_socket_delete(&udp_socket);
         return -1;
     }
     g_sf_comms0.p_api->write(g_sf_comms0.p_ctrl, "NTP Socket Bind ok\r\n", sizeof("NTP Socket Bind ok\r\n"), TX_NO_WAIT);
